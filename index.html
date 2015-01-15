@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <link rel="stylesheet" type="text/css" href="assets/css/style.css" />
+        <link rel="stylesheet" type="text/css" href="bower_components/FlipClock/compiled/flipclock.css" />
+    </head>
+    <body>
+        <div class="wrapper">
+
+            <header>
+                <img src="assets/img/all-out.png"><h1>All-Out</h1>
+            </header>
+            <div class="clock"></div>
+            <div class="op">
+                <dt>Next Op</dt>
+                <dd>
+                    <strong>The ISKathon</strong>
+                    17:00
+                </dd>
+            </div>
+
+        </div>
+
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+        <script src="bower_components/FlipClock/compiled/flipclock.min.js"></script>
+        <script type="text/javascript">
+            var date = new Date(Date.UTC(2015, 0, 15, 17, 0, 0, 0));
+            var now = new Date();
+            console.log(date);
+            var diff = date.getTime()/1000 - now.getTime()/1000;
+
+            var clock = $('.clock').FlipClock(diff, {
+                countdown: true
+            });
+        </script>
+
+    </body>
+</html>
