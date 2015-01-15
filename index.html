@@ -17,11 +17,10 @@
                 <img src="assets/img/all-out.png"><h1>All-Out</h1>
             </header>
             <div class="clock"></div>
-            <div class="op">
-                <!--<dt>Next Op</dt>-->
-                <dd>
-                    <strong>Since last workplace accident</strong>
-                </dd>
+            <div class="loss">
+                <strong>since last workplace accident</strong>
+                <br>
+                <a id="loss-link" target="_blank"></a>
             </div>
 
             <div class="links">
@@ -33,14 +32,31 @@
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
         <script src="bower_components/FlipClock/compiled/flipclock.min.js"></script>
         <script type="text/javascript">
-            var date = new Date(Date.UTC(2015, 0, 15, 21, 30, 0, 0));
-            //var now = new Date();
-            //var diff = date.getTime()/1000 - now.getTime()/1000;
-
-            var clock = $('.clock').FlipClock(date, {
-                clockFace: 'DailyCounter',
-                countdown: false
+            var zkillRequest = $.ajax({
+                url: 'https://zkillboard.com/api/losses/corporationID/98354071/',
+                type: 'GET',
+                cache: true
             });
+
+            zkillRequest.success(function(losses) {
+                var lastLossTime = new Date(losses[0].killTime);
+                var now = new Date();
+                var diff = now.getTime()/1000 - lastLossTime.getTime()/1000;
+
+                $('.clock').FlipClock(diff, {
+                    clockFace: 'DailyCounter'
+                });
+
+                var linkText = losses[0].victim.characterName + ' (' + numberWithCommas(losses[0].zkb.totalValue) + ' ISK)';
+                var linkUrl = 'https://zkillboard.com/kill/' + losses[0].killID + '/';
+
+                $('#loss-link').text(linkText).attr('href', linkUrl);
+            });
+
+            var numberWithCommas = function(x) {
+                return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+            }
+
         </script>
 
     </body>
