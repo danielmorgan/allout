@@ -39,9 +39,13 @@
             });
 
             zkillRequest.success(function(losses) {
-                var lastLossTime = new Date(losses[0].killTime);
+                var lastLossTime = new Date(losses[0].killTime).getTime();
                 var now = new Date();
-                var diff = now.getTime()/1000 - lastLossTime.getTime()/1000;
+                var localNow = now.getTime();
+                var localOffset = now.getTimezoneOffset() * 60000;
+                var utcNow = localNow + localOffset;
+
+                var diff = utcNow/1000 - lastLossTime/1000;
 
                 $('.clock').FlipClock(diff, {
                     clockFace: 'DailyCounter'
