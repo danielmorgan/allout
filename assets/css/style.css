@@ -15,10 +15,11 @@ body {
     text-transform: normal;
     height: 100%;
     background-color: #ffb23d;
+    font-size: 16px;
 }
 
 .wrapper {
-    width: 460px;
+    width: 620px;
     height: 116px;
     margin: 20px auto;
     position: relative;
@@ -39,16 +40,34 @@ header h1 {
     border: 5px solid #FFC56C;
     padding: 50px;
     text-align: left;
-    color: #e8e8e8;
 }
 
 .op dt {
     font-size: 26px;
     margin-bottom: 10px;
     text-shadow: 2px 2px 0px #D97200;
+    color: #e8e8e8;
 }
 
 .op dd {
     font-size: 36px;
-    text-shadow: 3px 3px 0px #D97200
+    text-shadow: 3px 3px 0px #D97200;
+    color: #fff;
+}
+
+.links {
+    margin: 50px 0;
+}
+
+.links a {
+    padding: 0 10px;
+    border-right: 3px solid #FFC56C;
+}
+
+.links a:last-child {
+    border-right: 0;
+}
+
+a {
+    color: #ff3600;
 }

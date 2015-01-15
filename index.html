@@ -1,6 +1,12 @@
 <!DOCTYPE html>
 <html>
     <head>
+        <title>All-Out - EVE Online</title>
+
+        <meta name="description" content="New Eden's premier 'WTF does this button do?' corporation." />
+        <meta name="author" content="Big Pi <bigpieve@gmail.com>" />
+        <link rel="shortcut icon" href="assets/img/favicon.png"/>
+
         <link rel="stylesheet" type="text/css" href="assets/css/style.css" />
         <link rel="stylesheet" type="text/css" href="bower_components/FlipClock/compiled/flipclock.css" />
     </head>
@@ -12,11 +18,14 @@
             </header>
             <div class="clock"></div>
             <div class="op">
-                <dt>Next Op</dt>
+                <!--<dt>Next Op</dt>-->
                 <dd>
-                    <strong>The ISKathon</strong>
-                    17:00
+                    <strong>Since last workplace accident</strong>
                 </dd>
+            </div>
+
+            <div class="links">
+                <a href="/fits">WTF Should I Fly?</a><a href="/assets/img/posfund.png">Donate!</a>
             </div>
 
         </div>
@@ -24,13 +33,13 @@
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
         <script src="bower_components/FlipClock/compiled/flipclock.min.js"></script>
         <script type="text/javascript">
-            var date = new Date(Date.UTC(2015, 0, 15, 17, 0, 0, 0));
-            var now = new Date();
-            console.log(date);
-            var diff = date.getTime()/1000 - now.getTime()/1000;
+            var date = new Date(Date.UTC(2015, 0, 15, 21, 30, 0, 0));
+            //var now = new Date();
+            //var diff = date.getTime()/1000 - now.getTime()/1000;
 
-            var clock = $('.clock').FlipClock(diff, {
-                countdown: true
+            var clock = $('.clock').FlipClock(date, {
+                clockFace: 'DailyCounter',
+                countdown: false
             });
         </script>
 
